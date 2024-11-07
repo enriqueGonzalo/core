@@ -1,0 +1,80 @@
+openapi: "3.0.3"
+info:
+  title: Price Application API
+  description: API for retrieving the applicable price based on product ID, brand ID, and application date.
+  version: "1.0.0"
+servers:
+  - url: https://api.example.com
+    description: Production server
+  - url: http://localhost:8080
+    description: Local development server
+paths:
+  /prices:
+    get:
+      operationId: getApplicablePrice
+      summary: Retrieve applicable price
+      tags:
+        - price
+      parameters:
+        - in: query
+          name: applicationDate
+          required: true
+          schema:
+            type: string
+          description: The date to apply the price.
+        - in: query
+          name: productId
+          required: true
+          schema:
+            type: integer
+          description: The identifier of the product.
+        - in: query
+          name: brandId
+          required: true
+          schema:
+            type: integer
+          description: The identifier of the brand (e.g., ZARA).
+      responses:
+        '200':
+          description: Successful response with applicable price details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetApplicablePriceResponse'
+        '400':
+          description: Bad request, invalid input parameters.
+        '404':
+          description: No applicable price found for the given parameters.
+        '500':
+          description: Internal server error.
+
+components:
+  schemas:
+    GetApplicablePriceResponse:
+      type: object
+      properties:
+        productId:
+          type: integer
+          description: The identifier of the product.
+        brandId:
+          type: integer
+          description: The identifier of the brand.
+        applicablePriceList:
+          type: integer
+          description: The applicable price list identifier.
+        applicationDates:
+          type: object
+          description: The dates during which the price is applicable.
+          properties:
+            startDate:
+              type: string
+              format: date-time
+              description: The start date of the price application.
+            endDate:
+              type: string
+              format: date-time
+              description: The end date of the price application.
+        finalPrice:
+          type: number
+          format: float
+          description: The final applicable price.
