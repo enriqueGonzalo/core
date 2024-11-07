@@ -1,6 +1,5 @@
 package com.enriquegonzalo.controller;
 
-import com.enriquegonzalo.entity.Price;
 import com.enriquegonzalo.inditex.core.openapi.api.PricesApi;
 import com.enriquegonzalo.inditex.core.openapi.api.model.GetApplicablePriceResponseDTO;
 import com.enriquegonzalo.mapper.PriceMapper;
@@ -23,7 +22,6 @@ public class PriceApiController implements PricesApi {
     @Override
     public ResponseEntity<GetApplicablePriceResponseDTO> getApplicablePrice(String applicationDate, Integer productId, Integer brandId) {
         log.info("getPrices");
-        Price price = this.getApplicablePriceUseCase.getApplicablePrice(applicationDate, productId, brandId);
-        return ResponseEntity.status(HttpStatus.OK).body(this.priceMapper.toDto(price));
+        return ResponseEntity.status(HttpStatus.OK).body(this.priceMapper.toDto(this.getApplicablePriceUseCase.getApplicablePrice(applicationDate, productId, brandId)));
     }
 }

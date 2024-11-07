@@ -62,18 +62,10 @@ components:
         applicablePriceList:
           type: integer
           description: The applicable price list identifier.
-        applicationDates:
-          type: object
-          description: The dates during which the price is applicable.
-          properties:
-            startDate:
-              type: string
-              format: date-time
-              description: The start date of the price application.
-            endDate:
-              type: string
-              format: date-time
-              description: The end date of the price application.
+        applicationDate:
+          type: string
+          format: date-time
+          description: The end date of the price application.
         finalPrice:
           type: number
           format: float
