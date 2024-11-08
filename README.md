@@ -21,7 +21,7 @@ The application exposes a **REST API** that allows querying the price of a speci
 ## Architecture
 
 The **Hexagonal Architecture** used in this project follows a **ports and adapters** approach:
-- **api-rest**: Contains the REST API controllers and DTOs.
+- **Api-rest**: Contains the REST API controllers and DTOs.
 - **Domain**: Contains domain entities and business logic.
 - **Application**: Defines use cases and business rules.
 - **Infrastructure**: Manages configuration, persistence, and other infrastructure components.
