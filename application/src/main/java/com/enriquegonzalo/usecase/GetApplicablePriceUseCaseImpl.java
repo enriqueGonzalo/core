@@ -20,6 +20,6 @@ public class GetApplicablePriceUseCaseImpl implements GetApplicablePriceUseCase 
     public Price getApplicablePrice(String applicationDate, Integer productId, Integer brandId) {
         log.info("GetApplicablePriceUseCaseImpl");
         Optional<Price> optionalPrice = this.getApplicablePriceRepository.findPrice(productId, Long.valueOf(brandId), LocalDateTime.parse(applicationDate));
-        return optionalPrice.orElseThrow(() -> new RuntimeException("Price not found"));
+        return optionalPrice.orElseGet(Price::new);
     }
 }

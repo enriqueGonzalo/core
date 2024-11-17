@@ -23,6 +23,11 @@
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>com.enriquegonzalo</groupId>
+      <artifactId>api-rest</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>

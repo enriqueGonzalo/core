@@ -6,7 +6,6 @@ import com.enriquegonzalo.mapper.PriceMapper;
 import com.enriquegonzalo.usecase.GetApplicablePriceUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +21,6 @@ public class PriceApiController implements PricesApi {
     @Override
     public ResponseEntity<GetApplicablePriceResponseDTO> getApplicablePrice(String applicationDate, Integer productId, Integer brandId) {
         log.info("getPrices");
-        return ResponseEntity.status(HttpStatus.OK).body(this.priceMapper.toDto(this.getApplicablePriceUseCase.getApplicablePrice(applicationDate, productId, brandId)));
+        return ResponseEntity.ok(this.priceMapper.toDto(this.getApplicablePriceUseCase.getApplicablePrice(applicationDate, Math.toIntExact(Long.valueOf(productId)), brandId)));
     }
 }

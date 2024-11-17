@@ -25,7 +25,6 @@ The **Hexagonal Architecture** used in this project follows a **ports and adapte
 - **Domain**: Contains domain entities and business logic.
 - **Application**: Defines use cases and business rules.
 - **Infrastructure**: Manages configuration, persistence, and other infrastructure components.
-
 ### Architecture Diagram
 
 ```
